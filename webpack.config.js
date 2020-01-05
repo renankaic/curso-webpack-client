@@ -1,12 +1,25 @@
 const path = require('path');
 const babiliPlugin = require('babili-webpack-plugin');
 const extractTextPlugin = require('extract-text-webpack-plugin');
+const optimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 let plugins = []
 plugins.push(new extractTextPlugin('styles.css'))
 
 if(process.env.NODE_ENV == 'production'){
+
+    //Minificar os arquivos js e css
     plugins.push(new babiliPlugin());
+    plugins.push(new optimizeCSSAssetsPlugin({
+        cssProcessor: require('cssnano'),
+        cssProcessorOptions: {
+            discardComments: {
+                removeAll: true //Remove todos os comentarios em amb de producao
+            }
+        },
+        canPrint: true //Permite ou nao a exibicao de erros no console
+    }));
+
 }
 
 module.exports = {

@@ -21,3 +21,5 @@ Não esqueçam de entrar dentro da pasta `client` e executar o comando `npm inst
 
         import 'calopsita/dist/calop.css'; <- node_modules
         import '../css/alecrim.css; <- outra pasta
+    
+    Usando 'extract-text-webpack-plugin' para gerar um unico arquivo CSS para impedir o FOUC (Flash of Unstyled Content)

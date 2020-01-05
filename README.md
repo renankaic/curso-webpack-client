@@ -14,3 +14,10 @@ Não esqueçam de entrar dentro da pasta `client` e executar o comando `npm inst
     Configurando o app para importar o css do bootstrap como modulo
     Configurando css-loader e style-loader para carregar o css do bootstrap como modulo
     Configurando o url-loader e file-loader para carregar as fontes do bootstrap
+    Importando um css qualquer usando a sintaxe 'import'
+    Quando usar o import:
+        - Se colocar sem a '/' no comeco o webpack ira buscar na pasta node_modules
+        - Se quiser importar um modulo fora da pasta node_modules tem que colocar o caminho relativo ate o arquivo
+
+        import 'calopsita/dist/calop.css'; <- node_modules
+        import '../css/alecrim.css; <- outra pasta

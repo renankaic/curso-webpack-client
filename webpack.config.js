@@ -24,6 +24,13 @@ if(process.env.NODE_ENV == 'production'){
 
 module.exports = {
     entry: "./app-src/app.js",
+    devServer: {
+        host: '0.0.0.0',
+        port: 8080,
+        inline: true,
+        compress: true,
+        disableHostCheck: true
+    },
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),

@@ -23,3 +23,5 @@ Não esqueçam de entrar dentro da pasta `client` e executar o comando `npm inst
         import '../css/alecrim.css; <- outra pasta
     
     Usando 'extract-text-webpack-plugin' para gerar um unico arquivo CSS para impedir o FOUC (Flash of Unstyled Content)
+
+    Usando  o 'optimizeCSSAssetsPlugin' e 'cssnano' para gerar css's minificados para ambiente de producao

@@ -15,11 +15,14 @@ plugins.push(new webpack.ProvidePlugin({
     'jQuery': 'jquery/dist/jquery.js'
 }));
 
+let SERVICE_URL = JSON.stringify("http://192.168.238.128:3000");
 if(process.env.NODE_ENV == 'production'){
+
+    SERVICE_URL = JSON.stringify("http://192.168.238.128:3000");
 
     //Otimiza o carregamentos doa arquivos e módulos
     plugins.push(new webpack.optimize.ModuleConcatenationPlugin());
-    
+
     plugins.push(new babiliPlugin());
 
     //Minificar os arquivos js e css
@@ -34,6 +37,9 @@ if(process.env.NODE_ENV == 'production'){
     }));
 
 }
+
+//Plugin utilizado para facilitar a alteração do endereço de serviço de acordo com o ambiente que a aplicação estará rodando
+plugins.push(new webpack.DefinePlugin({ SERVICE_URL: SERVICE_URL }));
 
 module.exports = {
     entry: "./app-src/app.js",

@@ -32,3 +32,10 @@ Não esqueçam de entrar dentro da pasta `client` e executar o comando `npm inst
     Podemos importar um script para o projeto utilizando a sintaxe 'import'. Isso fara com que as funcoes do modulo do script sejam disponibilizados na aplicacao
 
     Para importar um modulo de um script de forma global (para toda a aplicacao) devemos utilizar o plugin nativo do webpack 'ProviderPlugin' que pode ser obtido a partir de um "require('webpack')" e, em seguida, colocar quais variaveis e seus respectivos arquivos de scripts devem ser publicadas globalmente no projeto
+
+07/Jan/2020 ---
+    Otimizando carregamento de scripts:
+    Em ambiente de produção, podemos adicionar o plugin 'new webpack.optimize.ModuleConcatenationPlugin()' para otimizar o carregamento de scripts.
+
+    SERVICE_URL:
+    Podemos utilizar o plugin webpack.DefinePlugin({ SERVICE_URL : URL }) para definir qual o endereço de serviço a ser utilizado de acordo com o ambiente a aplicação estará rodando

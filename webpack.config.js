@@ -3,8 +3,21 @@ const babiliPlugin = require('babili-webpack-plugin');
 const extractTextPlugin = require('extract-text-webpack-plugin');
 const optimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const webpack = require('webpack');
+const htmlWebpackPlugin = require('html-webpack-plugin');
 
 let plugins = []
+
+//Plugin utilizado para gerar uma página HTML automaticamente de acordo com um template
+plugins.push(new htmlWebpackPlugin({
+    hash: true, //inalida o cache    
+    minify: {
+        html5: true,
+        collapseWhitespace: true, //remove espaço entre as tags
+        removeComments: true
+    },
+    filename: 'index.html',
+    template: __dirname + '/main.html'
+}));
 
 //Extrai o texto css
 plugins.push(new extractTextPlugin('styles.css'));
@@ -61,8 +74,7 @@ module.exports = {
     },
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist'),
-        publicPath: 'dist'
+        path: path.resolve(__dirname, 'dist')
     },
     module: {
         rules: [

@@ -17,8 +17,12 @@ plugins.push(new webpack.ProvidePlugin({
 
 if(process.env.NODE_ENV == 'production'){
 
-    //Minificar os arquivos js e css
+    //Otimiza o carregamentos doa arquivos e módulos
+    plugins.push(new webpack.optimize.ModuleConcatenationPlugin());
+    
     plugins.push(new babiliPlugin());
+
+    //Minificar os arquivos js e css
     plugins.push(new optimizeCSSAssetsPlugin({
         cssProcessor: require('cssnano'),
         cssProcessorOptions: {

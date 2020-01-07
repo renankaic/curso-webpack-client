@@ -15,6 +15,12 @@ plugins.push(new webpack.ProvidePlugin({
     'jQuery': 'jquery/dist/jquery.js'
 }));
 
+//Separando o nosso codigo das bibliotecas
+plugins.push(new webpack.optimize.CommonsChunkPlugin({
+    name: 'vendor',
+    filename: 'vendor.bundle.js'
+}));
+
 let SERVICE_URL = JSON.stringify("http://192.168.238.128:3000");
 if(process.env.NODE_ENV == 'production'){
 
@@ -42,7 +48,10 @@ if(process.env.NODE_ENV == 'production'){
 plugins.push(new webpack.DefinePlugin({ SERVICE_URL: SERVICE_URL }));
 
 module.exports = {
-    entry: "./app-src/app.js",
+    entry: {
+        app: './app-src/app.js',
+        vendor: ['jquery', 'bootstrap', 'reflect-metadata']
+    },
     devServer: {
         host: '0.0.0.0',
         port: 8080,
